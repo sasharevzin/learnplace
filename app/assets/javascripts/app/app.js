@@ -15,6 +15,7 @@ angular
           url: 'schools',
           templateUrl: 'schools/index.html',
           controller: 'IndexController',
+          // fetch schools before loading a controller
           resolve: {
             schools: function(SchoolService){
               return SchoolService.list();
@@ -26,6 +27,7 @@ angular
           url: 'schools/:school_id/courses',
           templateUrl: 'courses/index.html',
           controller: 'CoursesController',
+          // fetch school and courses before loading a controller
           resolve: {
             school: function($stateParams, SchoolService){
               return SchoolService.get($stateParams.school_id);
