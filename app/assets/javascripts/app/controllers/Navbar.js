@@ -1,18 +1,21 @@
-angular 
+angular
   .module("learnplace")
   .controller("NavbarController", NavbarController);
 
 function NavbarController($scope, Auth, $log){
-  
-  $scope.isSignedIn = Auth. isAuthenticated;
 
+  // used to show/hide login links in the view
+  $scope.isSignedIn = Auth.isAuthenticated;
+
+  //shows an email of logged user
   Auth.currentUser().then(function(response){
     $scope.email = response.email;
     // $scope.logout = Auth.logout;
   }, function(){
-    
-  }); 
 
+  });
+
+  // logout by using angular devise library
   $scope.logout = function() {
       alert("you logout");
 

@@ -1,14 +1,15 @@
 (function () {
   'use strict';
-  angular 
+  angular
     .module("learnplace")
     .controller("ChaptersController", ChaptersController)
 
   function ChaptersController($scope, $http, $state, $stateParams, SchoolService, CourseService, ChapterService) {
-    
+
     var DATA = [];
     var endpoint = '/api/v1/schools/' + $stateParams.school_id + '/courses/' + $stateParams.course_id;
 
+    // defind an empty model
     function clear(){
       $scope.chapter = {
         name: '',
@@ -25,6 +26,7 @@
     $scope.course_name = '';
 
     $scope.doSearch = function(){
+      // filter loaded list
       $scope.chapters = DATA.filter(function(item){
         return item.name.indexOf($scope.query) != -1;
       });
@@ -41,6 +43,7 @@
         console.log("RESULTS", result.data.name);
         DATA.push(result.data);
         clear();
+        // after successful call, redirect to courses list
         $state.go('home.schools_courses_chapters');
       }, function(response){
         $scope.errors = response.data.errors;

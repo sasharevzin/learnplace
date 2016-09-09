@@ -1,5 +1,7 @@
+// REST service to communicate with backend api (RAILS)
 function SchoolService($http) {
   var services = {};
+  // defind a beggining of an endpoint
   var endpoint = '/api/v1/schools';
 
   services.get = function(school_id) {
