@@ -1,9 +1,11 @@
+// REST service to communicate with backend api (RAILS)
 function ChapterService($http) {
   var services = {};
+  // defind a beggining of an endpoint
   var endpoint = '/api/v1/schools';
 
   services.get = function(course_id, school_id, chapter_id) {
-    return $http.get(endpoint + '/' + school_id + '/courses/' + course_id + '/chapters/' + chapter_id); 
+    return $http.get(endpoint + '/' + school_id + '/courses/' + course_id + '/chapters/' + chapter_id);
   }
   // list
   services.list = function(course_id, school_id) {
